@@ -1,22 +1,39 @@
 import express from "express";
+import Todo from "../models/todo.js";
+
 const router = express.Router();
 
-let tasks = []; // temporary in-memory storage
-
-router.get("/tasks", (req, res) => {
-  res.json(tasks);
+// ✅ Get all tasks
+router.get("/api/tasks", async (req, res) => {
+  try {
+    const tasks = await Todo.find();
+    res.json(tasks);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-router.post("/tasks", (req, res) => {
-  const newTask = req.body;
-  tasks.push(newTask);
-  res.json(newTask); // ✅ only send the new task, not all tasks
+// ✅ Add a new task
+router.post("/api/tasks", async (req, res) => {
+  try {
+    const newTask = new Todo({
+      task: req.body.task,
+    });
+    await newTask.save();
+    res.json(newTask);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-router.delete("/tasks/:id", (req, res) => {
-  const id = req.params.id;
-  tasks = tasks.filter((task, index) => index != parseInt(id));
-  res.json({ message: "Task deleted", tasks });
+// ✅ Delete a task
+router.delete("/api/tasks/:id", async (req, res) => {
+  try {
+    const deleted = await Todo.findByIdAndDelete(req.params.id);
+    res.json(deleted);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 export default router;
