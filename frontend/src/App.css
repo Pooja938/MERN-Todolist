@@ -1,0 +1,61 @@
+/* ✅ Center entire app in the middle of the page */
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* centers vertically */
+  align-items: center;      /* centers horizontally */
+  height: 100vh;            /* full viewport height */
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Input section styling */
+.input-section input {
+  padding: 10px;
+  width: 250px;
+  margin-right: 10px;
+}
+
+.input-section button {
+  padding: 10px 15px;
+  background-color: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-section button:hover {
+  background-color: #005ecb;
+}
+
+/* Task list styling */
+.task-list {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.task-list li {
+  background: #f0f0f0;
+  margin: 10px auto;
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-list li button {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.task-list li button:hover {
+  background-color: darkred;
+}
