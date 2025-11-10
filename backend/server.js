@@ -6,7 +6,7 @@ import taskRoutes from "./routes/taskRoutes.js";
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8989;
 
 // Middleware
 app.use(cors());
